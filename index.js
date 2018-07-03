@@ -1,4 +1,4 @@
 import { AppRegistry } from "react-native";
-import App from "source/App";
+import Root from "source/root";
 
-AppRegistry.registerComponent("trivia", () => App);
+AppRegistry.registerComponent("trivia", () => Root);
