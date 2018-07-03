@@ -20,6 +20,6 @@ export default function(state = initialState, action) {
       return initialState;
 
     default:
-      return initialState;
+      return state;
   }
 }

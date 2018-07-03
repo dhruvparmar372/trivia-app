@@ -4,17 +4,19 @@ import {
   addQuiz as addQuizAction
 } from "source/actions/quizBank";
 import { fetchQuestions as fetchQuestionsApi } from "source/api/quizBank";
+import { parseQuestions } from "source/utils/api";
 
 function* fetchQuiz(action) {
   const { payload: quizType } = action;
   try {
     const { data } = yield call(fetchQuestionsApi, quizType);
     if (data.response_code === 0 && data.results.length) {
+      const quizId = new Date().getTime();
       yield put(
         addQuizAction({
           ...quizType,
-          id: new Date().getTime(),
-          questions: data.results
+          id: quizId,
+          questions: parseQuestions(data.results, quizId)
         })
       );
     }

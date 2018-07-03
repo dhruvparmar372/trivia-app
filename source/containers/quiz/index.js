@@ -14,7 +14,7 @@ import safeContainer from "source/components/safeContainer";
 class Quiz extends Component {
   endQuiz = () => {
     const { activeQuiz, endQuiz, navigation } = this.props;
-    endQuiz(activeQuiz);
+    endQuiz(activeQuiz.quiz);
     navigation.popToTop();
   };
 

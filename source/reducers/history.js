@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
       return action.quiz
         ? {
             data: _unionBy(
-              [{ quiz: action.quiz, id: action.quiz.id, endedOn: new Date() }],
+              [{ ...action.quiz, endedOn: new Date() }],
               state.data,
               "id"
             )
@@ -19,6 +19,6 @@ export default function(state = initialState, action) {
         : state;
 
     default:
-      return initialState;
+      return state;
   }
 }

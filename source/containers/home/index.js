@@ -14,6 +14,8 @@ import safeContainer from "source/components/safeContainer";
 import { MINIMUM_PENDING_QUIZZES_COUNT } from "source/constants/app";
 
 class Home extends Component {
+  triggerQuizBankFill = () =>
+    this.props.fillQuizBank(MINIMUM_PENDING_QUIZZES_COUNT);
   beginQuiz = () => {
     const { navigation, pendingQuizzes, startQuiz } = this.props;
     const quizToStart = pendingQuizzes[0];
@@ -25,8 +27,19 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    console.log("trigger fill quiz bank");
-    this.props.fillQuizBank(MINIMUM_PENDING_QUIZZES_COUNT);
+    this.willFocusListener = this.props.navigation.addListener(
+      "willFocus",
+      this.triggerQuizBankFill
+    );
+    this.willBlurListener = this.props.navigation.addListener(
+      "willBlur",
+      this.triggerQuizBankFill
+    );
+  }
+
+  componentWillUnmount() {
+    this.willFocusListener.remove();
+    this.willBlurListener.remove();
   }
 
   render() {
