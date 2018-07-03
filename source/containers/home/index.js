@@ -7,6 +7,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import Config from "react-native-config";
+import { connect } from "react-redux";
 
 class Home extends Component {
   static navigationOptions = {
@@ -22,6 +23,7 @@ class Home extends Component {
       <View style={styles.container}>
         <Text style={styles.welcome}>
           {Config.GREETING} Welcome to Trivia App!
+          {this.props.quizBank.length} Quizzes pending
         </Text>
         <TouchableOpacity onPress={this.beginQuiz}>
           <Text style={styles.beginQuiz}>Begin</Text>
@@ -50,4 +52,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+const mapStateToProps = state => ({
+  quizBank: state.quizBank.data
+});
+
+export default connect(mapStateToProps)(Home);
