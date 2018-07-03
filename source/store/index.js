@@ -1,12 +1,32 @@
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { OFFLINE_PERSIST_KEYS } from "source/constants/store";
 import rootReducer from "source/reducers";
 import rootSaga from "source/sagas";
 
-const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+const persistedReducer = persistReducer(
+  {
+    key: "triviaApp",
+    storage,
+    whitelist: OFFLINE_PERSIST_KEYS
+  },
+  rootReducer
+);
 
-sagaMiddleware.run(rootSaga);
+const middlewares = [];
+const sagaMiddleware = createSagaMiddleware();
+middlewares.push(sagaMiddleware);
+
+const store = createStore(
+  persistedReducer,
+  composeWithDevTools(applyMiddleware(...middlewares))
+);
+
+export const persistor = persistStore(store, null, () => {
+  sagaMiddleware.run(rootSaga);
+});
 
 export default store;

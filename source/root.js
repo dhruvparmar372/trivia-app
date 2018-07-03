@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { Provider } from "react-redux";
-import store from "source/store";
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "source/store";
 import RootStack from "source/navigators/root";
 
 class Root extends Component {
   render() {
     return (
       <Provider store={store}>
-        <RootStack />
+        <PersistGate loading={null} persistor={persistor}>
+          <RootStack />
+        </PersistGate>
       </Provider>
     );
   }

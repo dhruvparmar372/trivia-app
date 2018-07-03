@@ -15,6 +15,7 @@
     "react-navigation": "^2.5.5",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
+    "redux-persist": "^5.10.0",
     "redux-saga": "^0.16.0",
     "redux-saga-routines": "^2.2.5"
   },
@@ -22,7 +23,8 @@
     "babel-jest": "23.2.0",
     "babel-preset-react-native": "4.0.0",
     "jest": "23.2.0",
-    "react-test-renderer": "16.3.1"
+    "react-test-renderer": "16.3.1",
+    "redux-devtools-extension": "^2.13.5"
   },
   "jest": {
     "preset": "react-native"
