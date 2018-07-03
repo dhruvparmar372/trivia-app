@@ -5,3 +5,8 @@ export const addQuiz = quiz => ({
   type: "QUIZBANK/ADD",
   quiz
 });
+
+export const fillQuizBank = quizCount => ({
+  type: "QUIZBANK/FILL",
+  quizCount
+});

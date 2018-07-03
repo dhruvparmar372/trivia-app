@@ -1,0 +1,1 @@
+export const MINIMUM_PENDING_QUIZZES_COUNT = 2;

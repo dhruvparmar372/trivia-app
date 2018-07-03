@@ -8,23 +8,36 @@ import {
 } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
+import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
+import { fillQuizBank as fillQuizBankAction } from "source/actions/quizBank";
 import safeContainer from "source/components/safeContainer";
+import { MINIMUM_PENDING_QUIZZES_COUNT } from "source/constants/app";
 
 class Home extends Component {
-  static navigationOptions = {
-    title: "Home"
+  beginQuiz = () => {
+    const { navigation, pendingQuizzes, startQuiz } = this.props;
+    const quizToStart = pendingQuizzes[0];
+
+    if (quizToStart) {
+      startQuiz(quizToStart);
+      navigation.navigate("Quiz");
+    }
   };
 
-  beginQuiz = () => {
-    this.props.navigation.navigate("Quiz");
-  };
+  componentDidMount() {
+    console.log("trigger fill quiz bank");
+    this.props.fillQuizBank(MINIMUM_PENDING_QUIZZES_COUNT);
+  }
 
   render() {
+    const { pendingQuizzes, completedQuizzes } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          {Config.GREETING} Welcome to Trivia App!
-          {this.props.quizBank.length} Quizzes pending
+        <Text style={styles.info}>
+          {pendingQuizzes.length} Quizzes pending!
+        </Text>
+        <Text style={styles.info}>
+          {completedQuizzes.length} Quizzes completed!
         </Text>
         <TouchableOpacity onPress={this.beginQuiz}>
           <Text style={styles.beginQuiz}>Begin</Text>
@@ -38,7 +51,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  welcome: {
+  info: {
     fontSize: 20,
     textAlign: "center",
     margin: 10
@@ -51,9 +64,15 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-  quizBank: state.quizBank.data
+  pendingQuizzes: state.quizBank.data,
+  completedQuizzes: state.history.data
 });
 
-export default connect(mapStateToProps)(
+const mapActionsToProps = {
+  startQuiz: startQuizAction,
+  fillQuizBank: fillQuizBankAction
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(
   safeContainer(Home, { backgroundColor: "red" })
 );
