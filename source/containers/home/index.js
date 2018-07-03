@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
+import safeContainer from "source/components/safeContainer";
 
 class Home extends Component {
   static navigationOptions = {
@@ -35,10 +36,7 @@ class Home extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    flex: 1
   },
   welcome: {
     fontSize: 20,
@@ -56,4 +54,6 @@ const mapStateToProps = state => ({
   quizBank: state.quizBank.data
 });
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(
+  safeContainer(Home, { backgroundColor: "red" })
+);

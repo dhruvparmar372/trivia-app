@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import Config from "react-native-config";
+import safeContainer from "source/components/safeContainer";
 
 class Quiz extends Component {
   static navigationOptions = {
@@ -20,8 +21,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    alignItems: "center"
   },
   welcome: {
     fontSize: 20,
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Quiz;
+export default safeContainer(Quiz, { backgroundColor: "yellow" });

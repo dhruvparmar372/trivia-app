@@ -8,6 +8,7 @@ export default createStackNavigator(
     Quiz: { screen: Quiz }
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    headerMode: "none"
   }
 );
