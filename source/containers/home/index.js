@@ -16,6 +16,7 @@ import { MINIMUM_PENDING_QUIZZES_COUNT } from "source/constants/app";
 class Home extends Component {
   triggerQuizBankFill = () =>
     this.props.fillQuizBank(MINIMUM_PENDING_QUIZZES_COUNT);
+
   beginQuiz = () => {
     const { navigation, pendingQuizzes, startQuiz } = this.props;
     const quizToStart = pendingQuizzes[0];

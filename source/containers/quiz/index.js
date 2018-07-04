@@ -12,20 +12,35 @@ import {
   endQuiz as endQuizAction,
   recordAnswer as recordAnswerAction
 } from "source/actions/activeQuiz";
+import { getFirstUnansweredQuestion, isQuizComplete } from "source/utils/quiz";
 import SafeContainer from "source/components/safeContainer";
 import Question from "source/components/question";
 
 class Quiz extends Component {
-  endQuiz = () => {
+  onQuizEnd = () => {
     const { activeQuiz, endQuiz, navigation } = this.props;
-    endQuiz(activeQuiz);
-    navigation.popToTop();
+    if (activeQuiz) {
+      endQuiz(activeQuiz);
+    }
+
+    if (isQuizComplete(activeQuiz)) {
+      navigation.navigate("Result", { quizId: activeQuiz.id });
+    } else {
+      navigation.popToTop();
+    }
   };
 
   onAnswer = (questionId, answer) => {
     const { activeQuiz, recordAnswer } = this.props;
     recordAnswer(activeQuiz.id, questionId, answer);
   };
+
+  componentDidUpdate() {
+    const { currentQuestion, activeQuiz } = this.props;
+    if (!currentQuestion && activeQuiz) {
+      this.onQuizEnd();
+    }
+  }
 
   renderQuestion() {
     const { currentQuestion } = this.props;
@@ -43,7 +58,7 @@ class Quiz extends Component {
     return (
       <View style={styles.container}>
         {this.renderQuestion()}
-        <TouchableOpacity onPress={this.endQuiz}>
+        <TouchableOpacity onPress={this.onQuizEnd}>
           <Text style={styles.endQuiz}>End</Text>
         </TouchableOpacity>
       </View>
@@ -69,11 +84,7 @@ const mapStateToProps = state => {
   const { activeQuiz } = state;
   return {
     activeQuiz,
-    currentQuestion: activeQuiz
-      ? activeQuiz.questions.reduce((accum, question) => {
-          return accum || (question.answer ? null : question);
-        }, null)
-      : null
+    currentQuestion: getFirstUnansweredQuestion(activeQuiz)
   };
 };
 
