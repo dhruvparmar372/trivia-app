@@ -1,16 +1,11 @@
 import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity
-} from "react-native";
+import { Platform, StyleSheet, View, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import _find from "lodash.find";
 import { AllHtmlEntities as Entities } from "html-entities";
 import { getQuizScore, isAnswerCorrect } from "source/utils/quiz";
 import SafeContainer from "source/components/safeContainer";
+import Text from "source/components/text";
 
 const entities = new Entities();
 

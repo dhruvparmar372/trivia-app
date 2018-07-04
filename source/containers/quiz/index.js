@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity
-} from "react-native";
+import { Platform, StyleSheet, View, TouchableOpacity } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
 import {
@@ -14,6 +8,7 @@ import {
 } from "source/actions/activeQuiz";
 import { getFirstUnansweredQuestion, isQuizComplete } from "source/utils/quiz";
 import SafeContainer from "source/components/safeContainer";
+import Text from "source/components/text";
 import Question from "source/components/question";
 
 class Quiz extends Component {

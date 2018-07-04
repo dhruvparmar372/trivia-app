@@ -1,17 +1,13 @@
 import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity
-} from "react-native";
+import { Platform, StyleSheet, View, TouchableOpacity } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
 import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 import { fillQuizBank as fillQuizBankAction } from "source/actions/quizBank";
-import safeContainer from "source/components/safeContainer";
+import SafeContainer from "source/components/safeContainer";
+import Text from "source/components/text";
 import { MINIMUM_PENDING_QUIZZES_COUNT } from "source/constants/app";
+import { BLUE } from "source/constants/colors";
 
 class Home extends Component {
   triggerQuizBankFill = () =>
@@ -88,5 +84,5 @@ const mapActionsToProps = {
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(
-  safeContainer(Home, { backgroundColor: "red" })
+  SafeContainer(Home, { backgroundColor: BLUE })
 );

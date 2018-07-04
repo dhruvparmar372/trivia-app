@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import _shuffle from "lodash.shuffle";
 import { AllHtmlEntities as Entities } from "html-entities";
+import Text from "source/components/text";
 
 const entities = new Entities();
 class Question extends PureComponent {
