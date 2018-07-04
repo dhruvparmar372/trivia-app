@@ -8,20 +8,41 @@ import {
 } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
-import { endQuiz as endQuizAction } from "source/actions/activeQuiz";
-import safeContainer from "source/components/safeContainer";
+import {
+  endQuiz as endQuizAction,
+  recordAnswer as recordAnswerAction
+} from "source/actions/activeQuiz";
+import SafeContainer from "source/components/safeContainer";
+import Question from "source/components/question";
 
 class Quiz extends Component {
   endQuiz = () => {
     const { activeQuiz, endQuiz, navigation } = this.props;
-    endQuiz(activeQuiz.quiz);
+    endQuiz(activeQuiz);
     navigation.popToTop();
   };
+
+  onAnswer = (questionId, answer) => {
+    const { activeQuiz, recordAnswer } = this.props;
+    recordAnswer(activeQuiz.id, questionId, answer);
+  };
+
+  renderQuestion() {
+    const { currentQuestion } = this.props;
+    return currentQuestion ? (
+      <View style={styles.questionContainer}>
+        <Question
+          question={currentQuestion}
+          onAnswer={answer => this.onAnswer(currentQuestion.id, answer)}
+        />
+      </View>
+    ) : null;
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to Quiz Screen!</Text>
+        {this.renderQuestion()}
         <TouchableOpacity onPress={this.endQuiz}>
           <Text style={styles.endQuiz}>End</Text>
         </TouchableOpacity>
@@ -32,30 +53,35 @@ class Quiz extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    flex: 1
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
+  questionContainer: {
+    flex: 1,
+    marginBottom: 20
   },
   endQuiz: {
     textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
+    color: "#333333"
   }
 });
 
-const mapStateToProps = state => ({
-  activeQuiz: state.activeQuiz
-});
+const mapStateToProps = state => {
+  const { activeQuiz } = state;
+  return {
+    activeQuiz,
+    currentQuestion: activeQuiz
+      ? activeQuiz.questions.reduce((accum, question) => {
+          return accum || (question.answer ? null : question);
+        }, null)
+      : null
+  };
+};
 
 const mapActionsToProps = {
-  endQuiz: endQuizAction
+  endQuiz: endQuizAction,
+  recordAnswer: recordAnswerAction
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(
-  safeContainer(Quiz, { backgroundColor: "yellow" })
+  SafeContainer(Quiz, { backgroundColor: "yellow" })
 );

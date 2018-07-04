@@ -39,5 +39,6 @@ export const persistor = persistStore(store, null, () => {
   sagaMiddleware.run(rootSaga);
   store.dispatch({ type: "SAGAS/INIT/DONE" });
 });
+// persistor.purge();
 
 export default store;
