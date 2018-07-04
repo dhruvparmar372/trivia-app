@@ -3,6 +3,7 @@ import createSagaMiddleware from "redux-saga";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { composeWithDevTools } from "redux-devtools-extension";
+import SplashScreen from "react-native-splash-screen";
 import {
   actionBuffer,
   absorbActionsToBuffer
@@ -38,7 +39,7 @@ absorbActionsToBuffer(
 export const persistor = persistStore(store, null, () => {
   sagaMiddleware.run(rootSaga);
   store.dispatch({ type: "SAGAS/INIT/DONE" });
+  SplashScreen.hide();
 });
-persistor.purge();
 
 export default store;
