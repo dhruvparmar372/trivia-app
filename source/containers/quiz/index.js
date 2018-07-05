@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  Alert
+  Alert,
+  ScrollView
 } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
@@ -21,8 +22,14 @@ import Text from "source/components/text";
 import Question from "source/components/question";
 import { IconBack } from "source/components/icons";
 import { BLUE, GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
+import { HEADER_HEIGHT } from "source/constants/layout";
 
 class Quiz extends Component {
+  constructor() {
+    super();
+    this.scrollView = React.createRef();
+  }
+
   onQuizQuit = () => {
     const { activeQuiz, navigation, endQuiz } = this.props;
     if (!activeQuiz) {
@@ -52,6 +59,7 @@ class Quiz extends Component {
   onAnswer = (questionId, answer) => {
     const { activeQuiz, recordAnswer } = this.props;
     recordAnswer(activeQuiz.id, questionId, answer);
+    this.scrollView.current.scrollTo({ y: 0, animated: true });
   };
 
   onScreenFocus = () => {
@@ -103,7 +111,12 @@ class Quiz extends Component {
               <Text style={styles.timer}>00:00</Text>
             </View>
           </View>
-          {this.renderQuestion()}
+          <ScrollView
+            contentContainerStyle={styles.scrollingContainer}
+            ref={this.scrollView}
+          >
+            {this.renderQuestion()}
+          </ScrollView>
         </View>
       </AndroidBackHandler>
     );
@@ -112,24 +125,27 @@ class Quiz extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
+  },
+  scrollingContainer: {
     paddingHorizontal: 15
   },
   header: {
-    height: 50,
+    height: HEADER_HEIGHT,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "stretch"
   },
   headerItem: {
-    justifyContent: "center"
+    justifyContent: "center",
+    paddingHorizontal: 15
   },
   timer: {
     color: GRAY
   },
   questionContainer: {
     flex: 1,
-    marginTop: 15
+    marginVertical: 15
   },
   endQuiz: {
     textAlign: "center",

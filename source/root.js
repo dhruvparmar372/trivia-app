@@ -18,4 +18,6 @@ class Root extends Component {
   }
 }
 
+console.disableYellowBox = true;
+
 export default Root;
