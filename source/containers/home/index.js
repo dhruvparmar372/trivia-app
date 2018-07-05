@@ -49,27 +49,33 @@ class Home extends Component {
     const { pendingQuizzes, completedQuizzes } = this.props;
     return (
       <View style={styles.container}>
+        <View style={styles.topWrap}>
+          <View>
+            <Text style={styles.welcomeText}>{I18n.t("welcomeMessage")}</Text>
+            <Text style={styles.appName}>{I18n.t("appName")}</Text>
+          </View>
+          <View style={styles.challengeContainer}>
+            <Text style={styles.challengeDescription}>
+              {I18n.t("challengeDescription", {
+                questionCount: QUIZ_QUESTION_COUNT
+              })}
+            </Text>
+            <Text style={styles.challengeText}>{I18n.t("challengeText")}</Text>
+          </View>
+        </View>
         <View>
-          <Text style={styles.welcomeText}>{I18n.t("welcomeMessage")}</Text>
-          <Text style={styles.appName}>{I18n.t("appName")}</Text>
+          <TouchableOpacity style={styles.beginButton} onPress={this.beginQuiz}>
+            <Text style={styles.beginButtonText}>{I18n.t("beginQuiz")}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.highScoreButton}
+            onPress={this.showHistory}
+          >
+            <Text style={styles.highScoreButtonText}>
+              {I18n.t("highScores")}
+            </Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.challengeContainer}>
-          <Text style={styles.challengeDescription}>
-            {I18n.t("challengeDescription", {
-              questionCount: QUIZ_QUESTION_COUNT
-            })}
-          </Text>
-          <Text style={styles.challengeText}>{I18n.t("challengeText")}</Text>
-        </View>
-        <TouchableOpacity style={styles.beginButton} onPress={this.beginQuiz}>
-          <Text style={styles.beginButtonText}>{I18n.t("beginQuiz")}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.highScoreButton}
-          onPress={this.showHistory}
-        >
-          <Text style={styles.highScoreButtonText}>{I18n.t("highScores")}</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -78,10 +84,13 @@ class Home extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     padding: 15
   },
-
+  topWrap: {
+    flex: 1,
+    justifyContent: "center"
+  },
   welcomeText: {
     fontSize: 24,
     color: GRAY,

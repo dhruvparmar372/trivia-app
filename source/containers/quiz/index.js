@@ -85,13 +85,18 @@ class Quiz extends Component {
   }
 
   renderQuestion() {
-    const { currentQuestion } = this.props;
+    const { currentQuestion, onboarding } = this.props;
     return currentQuestion ? (
       <View style={styles.questionContainer}>
         <Question
           question={currentQuestion}
           onAnswer={answer => this.onAnswer(currentQuestion.id, answer)}
         />
+        {onboarding.firstQuestionAnswered ? null : (
+          <Text style={styles.answerOnboardText}>
+            {I18n.t("chooseBooleanAnswer")}
+          </Text>
+        )}
       </View>
     ) : null;
   }
@@ -147,16 +152,19 @@ const styles = StyleSheet.create({
     flex: 1,
     marginVertical: 15
   },
-  endQuiz: {
-    textAlign: "center",
-    color: "#333333"
+  answerOnboardText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: GRAY,
+    textAlign: "center"
   }
 });
 
 const mapStateToProps = state => {
-  const { activeQuiz } = state;
+  const { activeQuiz, onboarding } = state;
   return {
     activeQuiz,
+    onboarding,
     currentQuestion: getFirstUnansweredQuestion(activeQuiz)
   };
 };

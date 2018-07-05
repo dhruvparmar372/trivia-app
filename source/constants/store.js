@@ -1,1 +1,6 @@
-export const OFFLINE_PERSIST_KEYS = ["quizBank", "activeQuiz", "history"];
+export const OFFLINE_PERSIST_KEYS = [
+  "quizBank",
+  "activeQuiz",
+  "history",
+  "onboarding"
+];

@@ -12,5 +12,6 @@ export default {
   yes: "Yes",
   scoreMessage: "Your score is:",
   correct: "Correct",
-  wrong: "Wrong"
+  wrong: "Wrong",
+  chooseBooleanAnswer: "Tap on True or False to answer the question."
 };
