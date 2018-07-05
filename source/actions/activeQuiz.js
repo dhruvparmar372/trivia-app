@@ -1,11 +1,13 @@
-export const startQuiz = quiz => ({
+export const startQuiz = (quiz, startedOn) => ({
   type: "QUIZ/START",
-  quiz
+  quiz,
+  startedOn
 });
 
-export const endQuiz = quiz => ({
+export const endQuiz = (quiz, endedOn) => ({
   type: "QUIZ/END",
-  quiz
+  quiz,
+  endedOn
 });
 
 export const recordAnswer = (quizId, questionId, answer) => ({

@@ -4,14 +4,14 @@ import {
   recordAnswer as recordAnswerAction
 } from "source/actions/activeQuiz";
 
-const initialState = null;
+export const initialState = null;
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case startQuizAction().type:
       return {
         ...action.quiz,
-        startedOn: new Date()
+        startedOn: action.startedOn
       };
 
     case endQuizAction().type:
@@ -19,7 +19,7 @@ export default function(state = initialState, action) {
 
     case recordAnswerAction().type:
       const { quizId, questionId, answer } = action;
-      return state.id === action.quizId && answer
+      return state && state.id === action.quizId && answer
         ? {
             ...state,
             questions: state.questions.map(question => {

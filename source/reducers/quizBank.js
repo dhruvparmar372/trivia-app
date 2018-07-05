@@ -5,22 +5,8 @@ import {
 } from "source/actions/quizBank";
 import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 
-const initialState = {
-  data: [
-    // {
-    //   id: 1,
-    //   type: "boolean",
-    //   questions: [
-    //     {
-    //       question: "yo",
-    //       correct_answer: "True",
-    //       incorrect_answers: ["False"],
-    //       type: "boolean",
-    //       category: "yolo"
-    //     }
-    //   ]
-    // }
-  ],
+export const initialState = {
+  data: [],
   fetching: false
 };
 
@@ -32,7 +18,7 @@ export default function(state = initialState, action) {
         fetching: true
       };
 
-    case fetchQuizAction.SUCCESS:
+    case fetchQuizAction.FULFILL:
       return {
         ...state,
         fetching: false

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`activeQuiz reducer ignores answer if questionId does not match active quiz question on recordAnswer action 1`] = `
+Object {
+  "id": 1,
+  "questions": Array [
+    Object {
+      "correct_answer": "True",
+      "id": 1,
+      "incorrect_answers": Array [
+        "False",
+      ],
+      "question": "1 + 1 = 2?",
+      "type": "boolean",
+    },
+  ],
+  "startedOn": "2017-12-31T18:30:00.000Z",
+}
+`;
+
+exports[`activeQuiz reducer ignores answer if quizId does not match active quiz on recordAnswer action 1`] = `
+Object {
+  "id": 1,
+  "questions": Array [
+    Object {
+      "correct_answer": "True",
+      "id": 1,
+      "incorrect_answers": Array [
+        "False",
+      ],
+      "question": "1 + 1 = 2?",
+      "type": "boolean",
+    },
+  ],
+  "startedOn": "2017-12-31T18:30:00.000Z",
+}
+`;
+
+exports[`activeQuiz reducer removes quiz data on endQuiz action 1`] = `null`;
+
+exports[`activeQuiz reducer saves answer for quiz question on recordAnswer action 1`] = `
+Object {
+  "id": 1,
+  "questions": Array [
+    Object {
+      "answer": Object {
+        "value": "True",
+      },
+      "correct_answer": "True",
+      "id": 1,
+      "incorrect_answers": Array [
+        "False",
+      ],
+      "question": "1 + 1 = 2?",
+      "type": "boolean",
+    },
+  ],
+  "startedOn": "2017-12-31T18:30:00.000Z",
+}
+`;
+
+exports[`activeQuiz reducer sets quiz data on startQuiz action 1`] = `
+Object {
+  "id": 1,
+  "startedOn": "2017-12-31T18:30:00.000Z",
+}
+`;

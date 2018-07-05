@@ -22,7 +22,7 @@ class Home extends Component {
     const quizToStart = pendingQuizzes[0];
 
     if (quizToStart) {
-      startQuiz(quizToStart);
+      startQuiz(quizToStart, new Date());
       navigation.navigate("Quiz");
     }
   };

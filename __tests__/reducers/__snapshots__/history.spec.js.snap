@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`history reducer ignores saving quiz if not complete on endQuiz action 1`] = `
+Object {
+  "data": Array [],
+}
+`;
+
+exports[`history reducer saves quiz in data on endQuiz action 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "endedOn": "2017-12-31T18:30:00.000Z",
+      "id": 1,
+      "questions": Array [
+        Object {
+          "answer": Object {
+            "value": "True",
+          },
+          "correct_answer": "True",
+          "id": 1,
+          "incorrect_answers": Array [
+            "False",
+          ],
+          "question": "1 + 1 = 2?",
+          "type": "boolean",
+        },
+      ],
+      "startedOn": "2017-12-30T18:30:00.000Z",
+    },
+  ],
+}
+`;

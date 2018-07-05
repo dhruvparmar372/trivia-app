@@ -43,7 +43,7 @@ class Quiz extends Component {
         {
           text: I18n.t("yes"),
           onPress: () => {
-            endQuiz(activeQuiz);
+            endQuiz(activeQuiz, new Date());
             navigation.popToTop();
           }
         }
@@ -79,7 +79,7 @@ class Quiz extends Component {
   componentDidUpdate() {
     const { activeQuiz, endQuiz, navigation } = this.props;
     if (activeQuiz && isQuizComplete(activeQuiz)) {
-      endQuiz(activeQuiz);
+      endQuiz(activeQuiz, new Date());
       navigation.navigate("Result", { quizId: activeQuiz.id });
     }
   }

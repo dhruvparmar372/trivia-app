@@ -1,6 +1,6 @@
 import { recordAnswer as recordAnswerAction } from "source/actions/activeQuiz";
 
-const initialState = {
+export const initialState = {
   firstQuestionAnswered: false
 };
 

@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quizBank reducer adds quiz to data on addQuiz action 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "id": 1,
+      "questions": Array [
+        Object {
+          "correct_answer": "True",
+          "id": 1,
+          "incorrect_answers": Array [
+            "False",
+          ],
+          "question": "1 + 1 = 2?",
+          "type": "boolean",
+        },
+      ],
+    },
+  ],
+  "fetching": false,
+}
+`;
+
+exports[`quizBank reducer removes quiz from data on startQuiz action 1`] = `
+Object {
+  "data": Array [],
+}
+`;
+
+exports[`quizBank reducer sets fetching false on fetchQuizAction.FULFILL 1`] = `
+Object {
+  "data": Array [],
+  "fetching": false,
+}
+`;
+
+exports[`quizBank reducer sets fetching true on fetchQuizAction.TRIGGER 1`] = `
+Object {
+  "data": Array [],
+  "fetching": true,
+}
+`;
+
+exports[`quizBank reducer updates quiz inside data on addQuiz action 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "id": 1,
+      "questions": Array [
+        Object {
+          "correct_answer": "False",
+          "id": 2,
+          "incorrect_answers": Array [
+            "True",
+          ],
+          "question": "1 + 2 = 4?",
+          "type": "boolean",
+        },
+      ],
+    },
+  ],
+}
+`;
