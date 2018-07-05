@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quizBank actions add quiz action 1`] = `
+Object {
+  "quiz": Object {
+    "id": 1,
+    "questions": Array [
+      Object {
+        "correct_answer": "True",
+        "id": 1,
+        "incorrect_answers": Array [
+          "False",
+        ],
+        "question": "1 + 1 = 2?",
+        "type": "boolean",
+      },
+    ],
+  },
+  "type": "QUIZBANK/ADD",
+}
+`;
+
+exports[`quizBank actions fill quiz bank action 1`] = `
+Object {
+  "quizCount": 2,
+  "type": "QUIZBANK/FILL",
+}
+`;

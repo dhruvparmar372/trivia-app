@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`activeQuiz actions end quiz action 1`] = `
+Object {
+  "endedOn": "2017-12-31T18:30:00.000Z",
+  "quiz": Object {
+    "id": 1,
+    "questions": Array [
+      Object {
+        "correct_answer": "True",
+        "id": 1,
+        "incorrect_answers": Array [
+          "False",
+        ],
+        "question": "1 + 1 = 2?",
+        "type": "boolean",
+      },
+    ],
+  },
+  "type": "QUIZ/END",
+}
+`;
+
+exports[`activeQuiz actions end quiz action 2`] = `
+Object {
+  "answer": Object {
+    "value": "True",
+  },
+  "questionId": 1,
+  "quizId": 1,
+  "type": "QUIZ/RECORD_ANSWER",
+}
+`;
+
+exports[`activeQuiz actions start quiz action 1`] = `
+Object {
+  "quiz": Object {
+    "id": 1,
+    "questions": Array [
+      Object {
+        "correct_answer": "True",
+        "id": 1,
+        "incorrect_answers": Array [
+          "False",
+        ],
+        "question": "1 + 1 = 2?",
+        "type": "boolean",
+      },
+    ],
+  },
+  "startedOn": "2017-12-30T18:30:00.000Z",
+  "type": "QUIZ/START",
+}
+`;
