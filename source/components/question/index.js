@@ -2,7 +2,9 @@ import React, { PureComponent } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import _shuffle from "lodash.shuffle";
 import { AllHtmlEntities as Entities } from "html-entities";
+import I18n from "react-native-i18n";
 import Text from "source/components/text";
+import { GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
 
 const entities = new Entities();
 class Question extends PureComponent {
@@ -22,9 +24,13 @@ class Question extends PureComponent {
     const answers = _shuffle([...incorrect_answers, correct_answer]);
 
     return (
-      <View style={styles.container}>
+      <View>
         <Text style={styles.category}>{category}</Text>
-        <Text style={styles.question}>{entities.decode(questionText)}</Text>
+        <View style={styles.question}>
+          <Text style={styles.questionText}>
+            {entities.decode(questionText)}
+          </Text>
+        </View>
         {answers.map(answer => (
           <TouchableOpacity
             key={answer}
@@ -40,28 +46,33 @@ class Question extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   category: {
-    fontSize: 16,
-    color: "#000",
-    marginBottom: 20
+    fontSize: 18,
+    color: GRAY,
+    marginBottom: 15
   },
   question: {
-    fontSize: 24,
-    color: "#000",
-    marginBottom: 20
-  },
-  answer: {
     borderWidth: 1,
-    borderColor: "red",
-    marginBottom: 5,
-    marginHorizontal: 50
+    borderColor: GRAY,
+    padding: 10,
+    borderRadius: 2,
+    marginBottom: 24
+  },
+  questionText: {
+    fontSize: 29,
+    color: GRAY
+  },
+
+  answer: {
+    backgroundColor: LIGHT_BLUE,
+    padding: 12,
+    borderRadius: 2,
+    marginTop: 10
   },
   answerText: {
-    fontSize: 20,
-    color: "#000"
+    color: DARK_BLUE,
+    fontSize: 18,
+    textAlign: "center"
   }
 });
 

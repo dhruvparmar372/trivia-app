@@ -6,7 +6,21 @@ import {
 import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 
 const initialState = {
-  data: [],
+  data: [
+    // {
+    //   id: 1,
+    //   type: "boolean",
+    //   questions: [
+    //     {
+    //       question: "yo",
+    //       correct_answer: "True",
+    //       incorrect_answers: ["False"],
+    //       type: "boolean",
+    //       category: "yolo"
+    //     }
+    //   ]
+    // }
+  ],
   fetching: false
 };
 

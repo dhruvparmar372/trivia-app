@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "./node_modules/.bin/react-native link"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -17,6 +18,7 @@
     "react-native-config": "^0.11.5",
     "react-native-i18n": "^2.0.12",
     "react-native-splash-screen": "^3.0.9",
+    "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^2.5.5",
     "react-navigation-backhandler": "^1.1.1",
     "react-redux": "^5.0.7",

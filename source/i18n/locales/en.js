@@ -6,5 +6,8 @@ export default {
   challengeText: "Can you score 100%?",
   beginQuiz: "Begin Quiz",
   highScores: "High Scores",
-  quitQuiz: "Are you sure you want to quit the quiz?"
+  quitQuiz: "Are you sure you want to quit the quiz?",
+  category: "Category: {{category}}",
+  no: "No",
+  yes: "Yes"
 };

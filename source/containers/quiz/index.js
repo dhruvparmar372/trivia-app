@@ -10,6 +10,7 @@ import Config from "react-native-config";
 import { connect } from "react-redux";
 import { AndroidBackHandler } from "react-navigation-backhandler";
 import I18n from "react-native-i18n";
+import Icon from "react-native-vector-icons/Ionicons";
 import {
   endQuiz as endQuizAction,
   recordAnswer as recordAnswerAction
@@ -18,6 +19,7 @@ import { getFirstUnansweredQuestion, isQuizComplete } from "source/utils/quiz";
 import SafeContainer from "source/components/safeContainer";
 import Text from "source/components/text";
 import Question from "source/components/question";
+import { IconBack } from "source/components/icons";
 import { BLUE, GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
 
 class Quiz extends Component {
@@ -28,11 +30,11 @@ class Quiz extends Component {
     } else {
       Alert.alert(I18n.t("quitQuiz"), "", [
         {
-          text: "No",
+          text: I18n.t("no"),
           style: "cancel"
         },
         {
-          text: "Yes",
+          text: I18n.t("yes"),
           onPress: () => {
             endQuiz(activeQuiz);
             navigation.popToTop();
@@ -53,7 +55,7 @@ class Quiz extends Component {
   };
 
   componentDidUpdate() {
-    const { activeQuiz } = this.props;
+    const { activeQuiz, navigation } = this.props;
     if (activeQuiz && isQuizComplete(activeQuiz)) {
       navigation.navigate("Result", { quizId: activeQuiz.id });
     }
@@ -76,9 +78,15 @@ class Quiz extends Component {
       <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
         <View style={styles.container}>
           <View style={styles.header}>
-            <TouchableOpacity onPress={this.onQuizQuit}>
-              <Text>Back</Text>
+            <TouchableOpacity
+              style={styles.headerItem}
+              onPress={this.onQuizQuit}
+            >
+              <IconBack size={24} color={GRAY} />
             </TouchableOpacity>
+            <View style={styles.headerItem}>
+              <Text style={styles.timer}>00:00</Text>
+            </View>
           </View>
           {this.renderQuestion()}
         </View>
@@ -94,11 +102,20 @@ const styles = StyleSheet.create({
   },
   header: {
     height: 50,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "stretch"
+  },
+  headerItem: {
     justifyContent: "center"
+  },
+  timer: {
+    color: GRAY,
+    fontSize: 18
   },
   questionContainer: {
     flex: 1,
-    marginBottom: 20
+    marginTop: 15
   },
   endQuiz: {
     textAlign: "center",
