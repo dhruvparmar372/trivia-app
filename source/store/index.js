@@ -4,13 +4,13 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { composeWithDevTools } from "redux-devtools-extension";
 import SplashScreen from "react-native-splash-screen";
-import {
-  actionBuffer,
-  absorbActionsToBuffer
-} from "source/middlewares/actionBuffer";
 import { OFFLINE_PERSIST_KEYS } from "source/constants/store";
 import rootReducer from "source/reducers";
 import rootSaga from "source/sagas";
+import {
+  actionBuffer,
+  absorbActionsToBuffer
+} from "./middlewares/actionBuffer";
 
 const persistedReducer = persistReducer(
   {
