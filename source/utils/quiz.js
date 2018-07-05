@@ -33,7 +33,7 @@ export function isAnswerCorrect(question = {}, answer = {}) {
 
 export function getQuizScore(quiz) {
   if (!quiz) {
-    return "";
+    return {};
   }
 
   const total = quiz.questions.length;
@@ -47,8 +47,4 @@ export function getQuizScore(quiz) {
     correct,
     total
   };
-}
-
-export function formatQuizScore(score) {
-  return score.correct / score.total * 100;
 }

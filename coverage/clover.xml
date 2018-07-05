@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1530821153066" clover="3.2.0">
+  <project timestamp="1530821153066" name="All files">
+    <metrics statements="71" coveredstatements="49" conditionals="60" coveredconditionals="28" methods="27" coveredmethods="19" elements="158" coveredelements="96" complexity="0" loc="71" ncloc="71" packages="7" files="11" classes="11">
+      <package name="actions">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <file name="activeQuiz.js" path="/Users/dhruvparmar/code/g2i/trivia/source/actions/activeQuiz.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+          <line num="1" count="9" type="stmt"/>
+          <line num="7" count="10" type="stmt"/>
+          <line num="13" count="9" type="stmt"/>
+        </file>
+        <file name="quizBank.js" path="/Users/dhruvparmar/code/g2i/trivia/source/actions/quizBank.js">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="6" type="stmt"/>
+          <line num="9" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="components.icons">
+        <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <file name="index.js" path="/Users/dhruvparmar/code/g2i/trivia/source/components/icons/index.js">
+          <metrics statements="6" coveredstatements="6" conditionals="6" coveredconditionals="3" methods="3" coveredmethods="3"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        </file>
+      </package>
+      <package name="components.question">
+        <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="2"/>
+        <file name="index.js" path="/Users/dhruvparmar/code/g2i/trivia/source/components/question/index.js">
+          <metrics statements="9" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="2"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="38" count="2" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="components.text">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="index.js" path="/Users/dhruvparmar/code/g2i/trivia/source/components/text/index.js">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="4" type="stmt"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="constants">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <file name="colors.js" path="/Users/dhruvparmar/code/g2i/trivia/source/constants/colors.js">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="1" type="stmt"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="reducers">
+        <metrics statements="24" coveredstatements="20" conditionals="30" coveredconditionals="21" methods="6" coveredmethods="6"/>
+        <file name="activeQuiz.js" path="/Users/dhruvparmar/code/g2i/trivia/source/reducers/activeQuiz.js">
+          <metrics statements="8" coveredstatements="7" conditionals="12" coveredconditionals="10" methods="2" coveredmethods="2"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="10" count="5" type="cond" truecount="3" falsecount="1"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="21" count="3" type="stmt"/>
+          <line num="22" count="3" type="cond" truecount="5" falsecount="0"/>
+          <line num="26" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="37" count="0" type="stmt"/>
+        </file>
+        <file name="history.js" path="/Users/dhruvparmar/code/g2i/trivia/source/reducers/history.js">
+          <metrics statements="4" coveredstatements="3" conditionals="7" coveredconditionals="5" methods="1" coveredmethods="1"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="10" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="12" count="2" type="cond" truecount="4" falsecount="0"/>
+          <line num="23" count="0" type="stmt"/>
+        </file>
+        <file name="onboarding.js" path="/Users/dhruvparmar/code/g2i/trivia/source/reducers/onboarding.js">
+          <metrics statements="4" coveredstatements="3" conditionals="3" coveredconditionals="1" methods="1" coveredmethods="1"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+        </file>
+        <file name="quizBank.js" path="/Users/dhruvparmar/code/g2i/trivia/source/reducers/quizBank.js">
+          <metrics statements="8" coveredstatements="7" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="14" count="5" type="cond" truecount="4" falsecount="1"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="34" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="utils">
+        <metrics statements="18" coveredstatements="2" conditionals="22" coveredconditionals="3" methods="8" coveredmethods="2"/>
+        <file name="quiz.js" path="/Users/dhruvparmar/code/g2i/trivia/source/utils/quiz.js">
+          <metrics statements="18" coveredstatements="2" conditionals="22" coveredconditionals="3" methods="8" coveredmethods="2"/>
+          <line num="2" count="2" type="cond" truecount="1" falsecount="1"/>
+          <line num="4" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="13" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="42" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="46" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

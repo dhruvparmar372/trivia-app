@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parse questions adds id to all questions 1`] = `
+Array [
+  Object {
+    "id": "2010",
+    "question": "Question 1",
+  },
+  Object {
+    "id": "2011",
+    "question": "Question 2",
+  },
+]
+`;

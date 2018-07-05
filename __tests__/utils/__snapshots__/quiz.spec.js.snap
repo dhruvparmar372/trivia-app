@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`quiz utils return false if answer is not correct 1`] = `false`;
+
+exports[`quiz utils return false if quiz is not complete 1`] = `false`;
+
+exports[`quiz utils return false if quiz is not present 1`] = `false`;
+
+exports[`quiz utils return first unanswered question 1`] = `false`;
+
+exports[`quiz utils return null if no unanswered questions 1`] = `true`;
+
+exports[`quiz utils return quiz score 1`] = `
+Object {
+  "correct": 0,
+  "total": 1,
+}
+`;
+
+exports[`quiz utils return true if answer is correct 1`] = `true`;
+
+exports[`quiz utils return true if quiz is complete 1`] = `true`;
