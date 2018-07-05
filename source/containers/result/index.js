@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  ScrollView
+} from "react-native";
 import { connect } from "react-redux";
 import _find from "lodash.find";
 import { AllHtmlEntities as Entities } from "html-entities";
@@ -10,6 +16,7 @@ import SafeContainer from "source/components/safeContainer";
 import Text from "source/components/text";
 import { IconBack, IconCorrect, IconWrong } from "source/components/icons";
 import { BLUE, GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
+import { HEADER_HEIGHT } from "source/constants/layout";
 
 const entities = new Entities();
 
@@ -53,19 +60,28 @@ class Result extends Component {
       <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
         <View style={styles.container}>
           <View style={styles.header}>
-            <TouchableOpacity style={styles.headerItem} onPress={this.onBack}>
+            <TouchableOpacity
+              style={[styles.headerItem, styles.headerSideItem]}
+              onPress={this.onBack}
+            >
               <IconBack size={24} color={DARK_BLUE} />
             </TouchableOpacity>
+            <View style={styles.headerItem}>
+              <Text style={styles.headingText}>Result</Text>
+            </View>
+            <View style={[styles.headerItem, styles.headerSideItem]} />
           </View>
-          <View style={styles.scoreContainer}>
-            <Text style={styles.scoreMessage}>{I18n.t("scoreMessage")}</Text>
-            <Text style={styles.score}>
-              {formattedScore} ({correct}/{total})
-            </Text>
-          </View>
-          <View style={styles.answerList}>
-            {quiz.questions.map(renderQuestion)}
-          </View>
+          <ScrollView contentContainerStyle={styles.scrollingContainer}>
+            <View style={styles.scoreContainer}>
+              <Text style={styles.scoreMessage}>{I18n.t("scoreMessage")}</Text>
+              <Text style={styles.score}>
+                {formattedScore} ({correct}/{total})
+              </Text>
+            </View>
+            <View style={styles.answerList}>
+              {quiz.questions.map(renderQuestion)}
+            </View>
+          </ScrollView>
         </View>
       </AndroidBackHandler>
     );
@@ -74,17 +90,26 @@ class Result extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
+  },
+  scrollingContainer: {
     paddingHorizontal: 15
   },
   header: {
-    height: 50,
+    height: HEADER_HEIGHT,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "stretch"
   },
   headerItem: {
     justifyContent: "center"
+  },
+  headerSideItem: {
+    paddingHorizontal: 15,
+    width: 40
+  },
+  headingText: {
+    color: DARK_BLUE
   },
   scoreMessage: {
     fontSize: 24,
@@ -103,7 +128,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: DARK_BLUE,
     padding: 10,
-    marginTop: 10
+    marginBottom: 10
   },
   answerText: {
     color: DARK_BLUE
