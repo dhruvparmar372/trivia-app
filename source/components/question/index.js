@@ -7,6 +7,7 @@ import Text from "source/components/text";
 import { GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
 
 const entities = new Entities();
+
 class Question extends PureComponent {
   recordAnswer = answer => {
     this.props.onAnswer({ value: answer });
