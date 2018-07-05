@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   challengeDescription: {
-    fontSize: 18,
     color: GRAY
   },
   challengeText: {
@@ -120,7 +119,6 @@ const styles = StyleSheet.create({
   },
   beginButtonText: {
     color: DARK_BLUE,
-    fontSize: 18,
     textAlign: "center"
   },
 
@@ -132,7 +130,6 @@ const styles = StyleSheet.create({
   },
   highScoreButtonText: {
     color: GRAY,
-    fontSize: 18,
     textAlign: "center"
   }
 });

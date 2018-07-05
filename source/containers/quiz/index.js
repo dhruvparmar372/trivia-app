@@ -110,8 +110,7 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   timer: {
-    color: GRAY,
-    fontSize: 18
+    color: GRAY
   },
   questionContainer: {
     flex: 1,

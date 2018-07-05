@@ -47,7 +47,6 @@ class Question extends PureComponent {
 
 const styles = StyleSheet.create({
   category: {
-    fontSize: 18,
     color: GRAY,
     marginBottom: 15
   },
@@ -71,7 +70,6 @@ const styles = StyleSheet.create({
   },
   answerText: {
     color: DARK_BLUE,
-    fontSize: 18,
     textAlign: "center"
   }
 });

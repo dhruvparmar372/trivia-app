@@ -12,7 +12,7 @@ Text.propTypes = RNText.propTypes;
 const styles = StyleSheet.create({
   text: {
     fontFamily: "System",
-    fontSize: 16
+    fontSize: 18
   }
 });
 
