@@ -19,9 +19,11 @@ class Question extends PureComponent {
         question: questionText,
         incorrect_answers,
         correct_answer
-      }
+      },
+      ignoreAnswerShuffle
     } = this.props;
-    const answers = _shuffle([...incorrect_answers, correct_answer]);
+    const answers = [...incorrect_answers, correct_answer];
+    const orderedAnswers = ignoreAnswerShuffle ? answers : _shuffle(answers);
 
     return (
       <View>
