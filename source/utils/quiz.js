@@ -48,3 +48,7 @@ export function getQuizScore(quiz) {
     total
   };
 }
+
+export function formatQuizScore(score) {
+  return score.correct / score.total * 100;
+}

@@ -9,3 +9,17 @@ export const IconBack = props =>
   ) : (
     <MaterialIcon name={"arrow-back"} {...props} />
   );
+
+export const IconCorrect = props =>
+  Platform.OS === "ios" ? (
+    <IoniIcon name={"ios-checkmark-circle"} {...props} />
+  ) : (
+    <MaterialIcon name={"check-circle"} {...props} />
+  );
+
+export const IconWrong = props =>
+  Platform.OS === "ios" ? (
+    <IoniIcon name={"ios-close-circle"} {...props} />
+  ) : (
+    <MaterialIcon name={"cancel"} {...props} />
+  );

@@ -54,9 +54,24 @@ class Quiz extends Component {
     recordAnswer(activeQuiz.id, questionId, answer);
   };
 
-  componentDidUpdate() {
+  onScreenFocus = () => {
     const { activeQuiz, navigation } = this.props;
+    if (!activeQuiz) {
+      navigation.popToTop();
+    }
+  };
+
+  componentDidMount() {
+    this.willFocusListener = this.props.navigation.addListener(
+      "willFocus",
+      this.onScreenFocus
+    );
+  }
+
+  componentDidUpdate() {
+    const { activeQuiz, endQuiz, navigation } = this.props;
     if (activeQuiz && isQuizComplete(activeQuiz)) {
+      endQuiz(activeQuiz);
       navigation.navigate("Result", { quizId: activeQuiz.id });
     }
   }

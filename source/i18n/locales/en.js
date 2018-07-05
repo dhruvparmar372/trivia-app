@@ -9,5 +9,8 @@ export default {
   quitQuiz: "Are you sure you want to quit the quiz?",
   category: "Category: {{category}}",
   no: "No",
-  yes: "Yes"
+  yes: "Yes",
+  scoreMessage: "Your score is:",
+  correct: "Correct",
+  wrong: "Wrong"
 };
