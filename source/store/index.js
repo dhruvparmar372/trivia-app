@@ -41,5 +41,6 @@ export const persistor = persistStore(store, null, () => {
   store.dispatch({ type: "SAGAS/INIT/DONE" });
   SplashScreen.hide();
 });
+// persistor.purge();
 
 export default store;

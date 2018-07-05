@@ -1,5 +1,6 @@
 import _unionBy from "lodash.unionby";
 import { endQuiz as endQuizAction } from "source/actions/activeQuiz";
+import { isQuizComplete } from "source/utils/quiz";
 
 const initialState = {
   data: [] // is array of taken quizzes
@@ -8,7 +9,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case endQuizAction().type:
-      return action.quiz
+      return action.quiz && isQuizComplete(action.quiz)
         ? {
             data: _unionBy(
               [{ ...action.quiz, endedOn: new Date() }],
