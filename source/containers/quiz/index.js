@@ -62,7 +62,7 @@ class Quiz extends Component {
     setTimeout(() => {
       recordAnswer(activeQuiz.id, questionId, answer);
       this.scrollView.current.scrollTo({ y: 0, animated: true });
-    }, 200);
+    }, 100);
   };
 
   onScreenFocus = () => {
