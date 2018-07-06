@@ -201,7 +201,8 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     color: GRAY,
-    marginTop: 10
+    marginTop: 10,
+    textAlign: "center"
   },
   loadingContainer: {
     flex: 1,
