@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "postinstall": "./node_modules/.bin/react-native link"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.18.0",

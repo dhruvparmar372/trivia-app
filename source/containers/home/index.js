@@ -142,14 +142,14 @@ class Home extends Component {
 
   render() {
     const { showQuizLoading } = this.state;
+    const content = showQuizLoading
+      ? this.renderLoadingContainer()
+      : this.renderIntroContainer();
 
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        {showQuizLoading
-          ? this.renderLoadingContainer()
-          : this.renderIntroContainer()}
-        )}
+        {content}
       </View>
     );
   }
