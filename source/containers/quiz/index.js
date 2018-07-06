@@ -16,7 +16,11 @@ import {
   endQuiz as endQuizAction,
   recordAnswer as recordAnswerAction
 } from "source/actions/activeQuiz";
-import { getFirstUnansweredQuestion, isQuizComplete } from "source/utils/quiz";
+import {
+  getFirstUnansweredQuestion,
+  isQuizComplete,
+  getFormattedTimeElapsed
+} from "source/utils/quiz";
 import SafeContainer from "source/components/safeContainer";
 import Text from "source/components/text";
 import Question from "source/components/question";
@@ -116,7 +120,9 @@ class Quiz extends Component {
               <IconBack size={24} color={GRAY} />
             </TouchableOpacity>
             <View style={styles.headerItem}>
-              <Text style={styles.timer}>00:00</Text>
+              <Text style={styles.timer}>
+                {getFormattedTimeElapsed(this.props.activeQuiz)}
+              </Text>
             </View>
           </View>
           <ScrollView

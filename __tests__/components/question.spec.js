@@ -7,7 +7,8 @@ const dummyQuestion = {
   category: "Test",
   question: "Roses are only red&quot;",
   correct_answer: "False",
-  incorrect_answers: ["True"]
+  incorrect_answers: ["True"],
+  answers: ["True", "False"]
 };
 
 describe("question component", () => {

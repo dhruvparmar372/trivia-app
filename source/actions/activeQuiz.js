@@ -16,3 +16,8 @@ export const recordAnswer = (quizId, questionId, answer) => ({
   questionId,
   answer
 });
+
+export const updateQuizTime = timeInSeconds => ({
+  type: "QUIZ/UPDATE_TIME",
+  timeInSeconds
+});

@@ -1,7 +1,8 @@
 import {
   startQuiz as startQuizAction,
   endQuiz as endQuizAction,
-  recordAnswer as recordAnswerAction
+  recordAnswer as recordAnswerAction,
+  updateQuizTime as updateQuizTimeAction
 } from "source/actions/activeQuiz";
 
 export const initialState = null;
@@ -30,6 +31,14 @@ export default function(state = initialState, action) {
                   }
                 : question;
             })
+          }
+        : state;
+
+    case updateQuizTimeAction().type:
+      return state && state.id
+        ? {
+            ...state,
+            timeTaken: action.timeInSeconds
           }
         : state;
 

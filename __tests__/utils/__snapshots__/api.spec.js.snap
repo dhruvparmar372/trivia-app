@@ -3,11 +3,21 @@
 exports[`parse questions adds id to all questions 1`] = `
 Array [
   Object {
+    "answers": Array [
+      "True",
+    ],
+    "correct_answer": "True",
     "id": "2010",
+    "incorrect_answers": Array [],
     "question": "Question 1",
   },
   Object {
+    "answers": Array [
+      "True",
+    ],
+    "correct_answer": "True",
     "id": "2011",
+    "incorrect_answers": Array [],
     "question": "Question 2",
   },
 ]

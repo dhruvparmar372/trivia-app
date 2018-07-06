@@ -16,16 +16,8 @@ class Question extends PureComponent {
 
   render() {
     const {
-      question: {
-        category,
-        question: questionText,
-        incorrect_answers,
-        correct_answer
-      },
-      ignoreAnswerShuffle
+      question: { category, question: questionText, answers }
     } = this.props;
-    const answers = [...incorrect_answers, correct_answer];
-    const orderedAnswers = ignoreAnswerShuffle ? answers : _shuffle(answers);
 
     return (
       <View>
@@ -35,7 +27,7 @@ class Question extends PureComponent {
             {entities.decode(questionText)}
           </Text>
         </View>
-        {orderedAnswers.map(answer => (
+        {answers.map(answer => (
           <Button
             rounded
             key={answer}
