@@ -1,5 +1,5 @@
 import { delay } from "redux-saga";
-import { take, fork, put, cancel } from "redux-saga/effects";
+import { takeLatest, take, fork, put, cancel } from "redux-saga/effects";
 import {
   startQuiz as startQuizAction,
   endQuiz as endQuizAction,
@@ -18,10 +18,14 @@ function* trackQuizTime() {
   }
 }
 
-export default function*() {
-  yield take(startQuizAction().type);
+function* startQuizWatcher() {
   const timer = yield fork(trackQuizTime);
 
   yield take(endQuizAction().type);
+  secondsElapsed = 0;
   yield cancel(timer);
+}
+
+export default function*() {
+  yield takeLatest(startQuizAction().type, startQuizWatcher);
 }
