@@ -4,7 +4,8 @@ import {
   StyleSheet,
   View,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  StatusBar
 } from "react-native";
 import { connect } from "react-redux";
 import _find from "lodash.find";
@@ -58,6 +59,7 @@ class Result extends Component {
 
     return (
       <AndroidBackHandler onBackPress={this.onBackButtonPressAndroid}>
+        <StatusBar barStyle="dark-content" />
         <View style={styles.container}>
           <View style={styles.header}>
             <TouchableOpacity
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
   },
   headerSideItem: {
     paddingHorizontal: 15,
-    width: 40
+    width: 50
   },
   headingText: {
     color: DARK_BLUE

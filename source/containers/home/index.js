@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, View, TouchableOpacity } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  StatusBar
+} from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
 import I18n from "react-native-i18n";
@@ -49,6 +55,7 @@ class Home extends Component {
     const { pendingQuizzes, completedQuizzes } = this.props;
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <View style={styles.topWrap}>
           <View>
             <Text style={styles.welcomeText}>{I18n.t("welcomeMessage")}</Text>

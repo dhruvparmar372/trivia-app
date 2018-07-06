@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   headerSideItem: {
     paddingHorizontal: 15,
-    width: 40
+    width: 50
   },
   headingText: {
     color: GRAY

@@ -8,7 +8,7 @@ export const IconBack = props =>
   Platform.OS === "ios" ? (
     <IoniIcon name={"ios-arrow-back"} {...props} />
   ) : (
-    <MaterialIcon name={"arrow-back"} {...props} />
+    <IoniIcon name={"md-arrow-back"} {...props} />
   );
 
 export const IconCorrect = props =>

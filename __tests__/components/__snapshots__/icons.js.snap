@@ -13,14 +13,14 @@ exports[`icons android back icon 1`] = `
       },
       undefined,
       Object {
-        "fontFamily": "Material Icons",
+        "fontFamily": "Ionicons",
         "fontStyle": "normal",
         "fontWeight": "normal",
       },
     ]
   }
 >
-  
+  
 </Text>
 `;
 
@@ -85,14 +85,14 @@ exports[`icons ios back icon 1`] = `
       },
       undefined,
       Object {
-        "fontFamily": "Material Icons",
+        "fontFamily": "Ionicons",
         "fontStyle": "normal",
         "fontWeight": "normal",
       },
     ]
   }
 >
-  
+  
 </Text>
 `;
 
