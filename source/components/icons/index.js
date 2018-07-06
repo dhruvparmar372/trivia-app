@@ -2,6 +2,7 @@ import React from "react";
 import { Platform } from "react-native";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import IoniIcon from "react-native-vector-icons/Ionicons";
+import EntypoIcon from "react-native-vector-icons/Entypo";
 
 export const IconBack = props =>
   Platform.OS === "ios" ? (
@@ -23,3 +24,11 @@ export const IconWrong = props =>
   ) : (
     <MaterialIcon name={"cancel"} {...props} />
   );
+
+export const IconHappy = props => (
+  <EntypoIcon name={"emoji-happy"} {...props} />
+);
+export const IconNeutral = props => (
+  <EntypoIcon name={"emoji-neutral"} {...props} />
+);
+export const IconSad = props => <EntypoIcon name={"emoji-sad"} {...props} />;

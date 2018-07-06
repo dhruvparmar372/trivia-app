@@ -67,14 +67,16 @@ class Home extends Component {
           <TouchableOpacity style={styles.beginButton} onPress={this.beginQuiz}>
             <Text style={styles.beginButtonText}>{I18n.t("beginQuiz")}</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.highScoreButton}
-            onPress={this.showHistory}
-          >
-            <Text style={styles.highScoreButtonText}>
-              {I18n.t("highScores")}
-            </Text>
-          </TouchableOpacity>
+          {completedQuizzes.length ? (
+            <TouchableOpacity
+              style={styles.highScoreButton}
+              onPress={this.showHistory}
+            >
+              <Text style={styles.highScoreButtonText}>
+                {I18n.t("highScores")}
+              </Text>
+            </TouchableOpacity>
+          ) : null}
         </View>
       </View>
     );

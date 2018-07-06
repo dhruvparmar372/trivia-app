@@ -67,7 +67,7 @@ class Result extends Component {
               <IconBack size={24} color={DARK_BLUE} />
             </TouchableOpacity>
             <View style={styles.headerItem}>
-              <Text style={styles.headingText}>Result</Text>
+              <Text style={styles.headingText}>{I18n.t("result")}</Text>
             </View>
             <View style={[styles.headerItem, styles.headerSideItem]} />
           </View>

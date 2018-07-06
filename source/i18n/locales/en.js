@@ -13,5 +13,12 @@ export default {
   scoreMessage: "Your score is:",
   correct: "Correct",
   wrong: "Wrong",
-  chooseBooleanAnswer: "Tap on True or False to answer the question."
+  chooseBooleanAnswer: "Tap on True or False to answer the question.",
+  highScores: "High Scores",
+  result: "Result",
+  hard: "Hard",
+  medium: "Medium",
+  easy: "Easy",
+  score: "Score",
+  difficulty: "Difficulty"
 };
