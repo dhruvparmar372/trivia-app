@@ -84,6 +84,14 @@ class Result extends Component {
               {quiz.questions.map(renderQuestion)}
             </View>
           </ScrollView>
+          <TouchableOpacity
+            style={styles.playAgainButton}
+            onPress={this.onBack}
+          >
+            <Text style={styles.playAgainButtonText}>
+              {I18n.t("playAgain")}
+            </Text>
+          </TouchableOpacity>
         </View>
       </AndroidBackHandler>
     );
@@ -144,6 +152,14 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 24,
     color: BLUE
+  },
+  playAgainButton: {
+    backgroundColor: DARK_BLUE,
+    padding: 12
+  },
+  playAgainButtonText: {
+    color: GRAY,
+    textAlign: "center"
   }
 });
 

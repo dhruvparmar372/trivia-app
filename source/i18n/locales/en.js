@@ -16,6 +16,7 @@ export default {
   chooseBooleanAnswer: "Tap on True or False to answer the question.",
   highScores: "High Scores",
   result: "Result",
+  playAgain: "Play Again?",
   hard: "Hard",
   medium: "Medium",
   easy: "Easy",
