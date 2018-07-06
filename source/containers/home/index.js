@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  StatusBar
-} from "react-native";
+import { Platform, StyleSheet, View, StatusBar } from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
 import I18n from "react-native-i18n";
@@ -13,6 +7,7 @@ import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 import { fillQuizBank as fillQuizBankAction } from "source/actions/quizBank";
 import SafeContainer from "source/components/safeContainer";
 import Text from "source/components/text";
+import Button from "source/components/button";
 import {
   MINIMUM_PENDING_QUIZZES_COUNT,
   QUIZ_QUESTION_COUNT
@@ -71,18 +66,22 @@ class Home extends Component {
           </View>
         </View>
         <View>
-          <TouchableOpacity style={styles.beginButton} onPress={this.beginQuiz}>
-            <Text style={styles.beginButtonText}>{I18n.t("beginQuiz")}</Text>
-          </TouchableOpacity>
+          <Button
+            onPress={this.beginQuiz}
+            rounded
+            backgroundColor={LIGHT_BLUE}
+            textColor={DARK_BLUE}
+            text={I18n.t("beginQuiz")}
+          />
           {completedQuizzes.length ? (
-            <TouchableOpacity
-              style={styles.highScoreButton}
+            <Button
               onPress={this.showHistory}
-            >
-              <Text style={styles.highScoreButtonText}>
-                {I18n.t("highScores")}
-              </Text>
-            </TouchableOpacity>
+              rounded
+              backgroundColor={DARK_BLUE}
+              textColor={GRAY}
+              text={I18n.t("highScores")}
+              style={styles.highScoreButton}
+            />
           ) : null}
         </View>
       </View>
@@ -128,26 +127,8 @@ const styles = StyleSheet.create({
     color: GRAY,
     marginTop: 10
   },
-
-  beginButton: {
-    backgroundColor: LIGHT_BLUE,
-    padding: 12,
-    borderRadius: 2
-  },
-  beginButtonText: {
-    color: DARK_BLUE,
-    textAlign: "center"
-  },
-
   highScoreButton: {
-    backgroundColor: DARK_BLUE,
-    padding: 12,
-    borderRadius: 2,
     marginTop: 10
-  },
-  highScoreButtonText: {
-    color: GRAY,
-    textAlign: "center"
   }
 });
 

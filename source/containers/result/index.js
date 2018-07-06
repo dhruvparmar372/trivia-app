@@ -15,6 +15,7 @@ import { AndroidBackHandler } from "react-navigation-backhandler";
 import { getQuizScore, isAnswerCorrect } from "source/utils/quiz";
 import SafeContainer from "source/components/safeContainer";
 import Text from "source/components/text";
+import Button from "source/components/button";
 import { IconBack, IconCorrect, IconWrong } from "source/components/icons";
 import { BLUE, GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
 import { HEADER_HEIGHT } from "source/constants/layout";
@@ -84,14 +85,12 @@ class Result extends Component {
               {quiz.questions.map(renderQuestion)}
             </View>
           </ScrollView>
-          <TouchableOpacity
-            style={styles.playAgainButton}
+          <Button
             onPress={this.onBack}
-          >
-            <Text style={styles.playAgainButtonText}>
-              {I18n.t("playAgain")}
-            </Text>
-          </TouchableOpacity>
+            backgroundColor={DARK_BLUE}
+            textColor={GRAY}
+            text={I18n.t("playAgain")}
+          />
         </View>
       </AndroidBackHandler>
     );
@@ -152,14 +151,6 @@ const styles = StyleSheet.create({
   resultText: {
     fontSize: 24,
     color: BLUE
-  },
-  playAgainButton: {
-    backgroundColor: DARK_BLUE,
-    padding: 12
-  },
-  playAgainButtonText: {
-    color: GRAY,
-    textAlign: "center"
   }
 });
 

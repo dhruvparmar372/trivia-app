@@ -1,9 +1,10 @@
 import React, { PureComponent } from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { View, StyleSheet } from "react-native";
 import _shuffle from "lodash.shuffle";
 import { AllHtmlEntities as Entities } from "html-entities";
 import I18n from "react-native-i18n";
 import Text from "source/components/text";
+import Button from "source/components/button";
 import { GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
 
 const entities = new Entities();
@@ -34,14 +35,16 @@ class Question extends PureComponent {
             {entities.decode(questionText)}
           </Text>
         </View>
-        {answers.map(answer => (
-          <TouchableOpacity
+        {orderedAnswers.map(answer => (
+          <Button
+            rounded
             key={answer}
             onPress={() => this.recordAnswer(answer)}
             style={styles.answer}
-          >
-            <Text style={styles.answerText}>{answer}</Text>
-          </TouchableOpacity>
+            text={answer}
+            backgroundColor={LIGHT_BLUE}
+            textColor={DARK_BLUE}
+          />
         ))}
       </View>
     );
@@ -64,16 +67,8 @@ const styles = StyleSheet.create({
     fontSize: 29,
     color: GRAY
   },
-
   answer: {
-    backgroundColor: LIGHT_BLUE,
-    padding: 12,
-    borderRadius: 2,
     marginTop: 10
-  },
-  answerText: {
-    color: DARK_BLUE,
-    textAlign: "center"
   }
 });
 

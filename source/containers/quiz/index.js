@@ -58,8 +58,11 @@ class Quiz extends Component {
 
   onAnswer = (questionId, answer) => {
     const { activeQuiz, recordAnswer } = this.props;
-    recordAnswer(activeQuiz.id, questionId, answer);
-    this.scrollView.current.scrollTo({ y: 0, animated: true });
+    // allow click feedback to complete before recording answer
+    setTimeout(() => {
+      recordAnswer(activeQuiz.id, questionId, answer);
+      this.scrollView.current.scrollTo({ y: 0, animated: true });
+    }, 200);
   };
 
   onScreenFocus = () => {
