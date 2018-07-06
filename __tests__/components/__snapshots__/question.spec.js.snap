@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`question component renders question 1`] = `
+<View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Array [
+        Object {
+          "fontFamily": "System",
+          "fontSize": 18,
+        },
+        Object {
+          "color": "#eff0f4",
+          "marginBottom": 15,
+        },
+      ]
+    }
+  >
+    Test
+  </Text>
+  <View
+    style={
+      Object {
+        "borderColor": "#eff0f4",
+        "borderRadius": 2,
+        "borderWidth": 1,
+        "marginBottom": 24,
+        "padding": 10,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "fontFamily": "System",
+            "fontSize": 18,
+          },
+          Object {
+            "color": "#eff0f4",
+            "fontSize": 29,
+          },
+        ]
+      }
+    >
+      Roses are only red"
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#74dbef",
+        "borderRadius": 2,
+        "marginTop": 10,
+        "opacity": 1,
+        "padding": 12,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "fontFamily": "System",
+            "fontSize": 18,
+          },
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#264e86",
+          },
+        ]
+      }
+    >
+      True
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    isTVSelectable={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#74dbef",
+        "borderRadius": 2,
+        "marginTop": 10,
+        "opacity": 1,
+        "padding": 12,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "fontFamily": "System",
+            "fontSize": 18,
+          },
+          Object {
+            "textAlign": "center",
+          },
+          Object {
+            "color": "#264e86",
+          },
+        ]
+      }
+    >
+      False
+    </Text>
+  </View>
+</View>
+`;
