@@ -21,5 +21,8 @@ export default {
   medium: "Medium",
   easy: "Easy",
   score: "Score",
-  difficulty: "Difficulty"
+  difficulty: "Difficulty",
+  preparingQuiz: "Preparing quiz...",
+  quizFetchError:
+    "Oops! There was an error in preparing your quiz. Please check your internet connection."
 };

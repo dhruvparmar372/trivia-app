@@ -1,8 +1,16 @@
 import React, { Component } from "react";
-import { Platform, StyleSheet, View, StatusBar } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  View,
+  StatusBar,
+  TouchableOpacity
+} from "react-native";
 import Config from "react-native-config";
 import { connect } from "react-redux";
 import I18n from "react-native-i18n";
+import Spinner from "react-native-spinkit";
+import { withNavigationFocus } from "react-navigation";
 import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 import { fillQuizBank as fillQuizBankAction } from "source/actions/quizBank";
 import SafeContainer from "source/components/safeContainer";
@@ -15,17 +23,27 @@ import {
 import { BLUE, GRAY, LIGHT_BLUE, DARK_BLUE } from "source/constants/colors";
 
 class Home extends Component {
+  state = {
+    showQuizLoading: false
+  };
+
   triggerQuizBankFill = () =>
     this.props.fillQuizBank(MINIMUM_PENDING_QUIZZES_COUNT);
 
+  onBeginQuizTap = () => {
+    if (!this.props.pendingQuizzes.length) {
+      this.setState({
+        showQuizLoading: true
+      });
+    } else {
+      this.beginQuiz();
+    }
+  };
+
   beginQuiz = () => {
     const { navigation, pendingQuizzes, startQuiz } = this.props;
-    const quizToStart = pendingQuizzes[0];
-
-    if (quizToStart) {
-      startQuiz(quizToStart, new Date());
-      navigation.navigate("Quiz");
-    }
+    startQuiz(pendingQuizzes[0], new Date());
+    navigation.navigate("Quiz");
   };
 
   showHistory = () => this.props.navigation.navigate("History");
@@ -46,11 +64,45 @@ class Home extends Component {
     this.willBlurListener.remove();
   }
 
-  render() {
-    const { pendingQuizzes, completedQuizzes } = this.props;
+  componentDidUpdate(prevProps) {
+    const { pendingQuizzes: prevPendingQuizzes } = prevProps;
+    const { pendingQuizzes, isFocused } = this.props;
+    const { showQuizLoading } = this.state;
+
+    if (
+      !prevPendingQuizzes.length &&
+      pendingQuizzes.length &&
+      isFocused &&
+      showQuizLoading
+    ) {
+      this.setState({
+        showQuizLoading: false
+      });
+      this.beginQuiz();
+    }
+  }
+
+  renderLoadingContainer() {
+    const { quizFetchError } = this.props;
+    return quizFetchError ? (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>{quizFetchError}</Text>
+        <TouchableOpacity onPress={this.triggerQuizBankFill}>
+          <Text style={styles.loadingButton}>Try Again Now</Text>
+        </TouchableOpacity>
+      </View>
+    ) : (
+      <View style={styles.loadingContainer}>
+        <Spinner type="ThreeBounce" size={64} color={GRAY} />
+        <Text style={styles.loadingText}>{I18n.t("preparingQuiz")}</Text>
+      </View>
+    );
+  }
+
+  renderIntroContainer() {
+    const { completedQuizzes } = this.props;
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
+      <View style={styles.introContainer}>
         <View style={styles.topWrap}>
           <View>
             <Text style={styles.welcomeText}>{I18n.t("welcomeMessage")}</Text>
@@ -67,7 +119,7 @@ class Home extends Component {
         </View>
         <View>
           <Button
-            onPress={this.beginQuiz}
+            onPress={this.onBeginQuizTap}
             rounded
             backgroundColor={LIGHT_BLUE}
             textColor={DARK_BLUE}
@@ -87,13 +139,30 @@ class Home extends Component {
       </View>
     );
   }
+
+  render() {
+    const { showQuizLoading } = this.state;
+
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        {showQuizLoading
+          ? this.renderLoadingContainer()
+          : this.renderIntroContainer()}
+        )}
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
     padding: 15
+  },
+  introContainer: {
+    flex: 1,
+    justifyContent: "space-between"
   },
   topWrap: {
     flex: 1,
@@ -129,11 +198,28 @@ const styles = StyleSheet.create({
   },
   highScoreButton: {
     marginTop: 10
+  },
+  loadingText: {
+    color: GRAY,
+    marginTop: 10
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 20
+  },
+  loadingButton: {
+    marginTop: 20,
+    fontSize: 22,
+    color: GRAY,
+    textDecorationLine: "underline"
   }
 });
 
 const mapStateToProps = state => ({
   pendingQuizzes: state.quizBank.data,
+  quizFetchError: state.quizBank.fetchError,
   completedQuizzes: state.history.data
 });
 
@@ -142,6 +228,8 @@ const mapActionsToProps = {
   fillQuizBank: fillQuizBankAction
 };
 
-export default connect(mapStateToProps, mapActionsToProps)(
-  SafeContainer(Home, { backgroundColor: BLUE })
+export default withNavigationFocus(
+  connect(mapStateToProps, mapActionsToProps)(
+    SafeContainer(Home, { backgroundColor: BLUE })
+  )
 );

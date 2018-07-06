@@ -10,3 +10,8 @@ export const fillQuizBank = quizCount => ({
   type: "QUIZBANK/FILL",
   quizCount
 });
+
+export const setQuizFetchError = fetchErrorText => ({
+  type: "QUIZBANK/SET_FETCH_ERROR",
+  fetchErrorText
+});

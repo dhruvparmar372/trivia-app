@@ -5,7 +5,6 @@ import {
   endQuiz as endQuizAction,
   updateQuizTime as updateQuizTimeAction
 } from "source/actions/activeQuiz";
-import { updateAppState as updateAppStateAction } from "source/actions/appState";
 
 let timerPaused = false;
 let secondsElapsed = 0;

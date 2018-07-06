@@ -18,6 +18,7 @@ Object {
       ],
     },
   ],
+  "fetchError": "",
   "fetching": false,
 }
 `;
@@ -35,10 +36,33 @@ Object {
 }
 `;
 
-exports[`quizBank reducer sets fetching true on fetchQuizAction.TRIGGER 1`] = `
+exports[`quizBank reducer sets fetching true on fetchQuizAction.TRIGGER and reset fetchError text 1`] = `
 Object {
   "data": Array [],
+  "fetchError": "",
   "fetching": true,
+}
+`;
+
+exports[`quizBank reducer sets quiz fetch error text on setQuizFetchError action 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "id": 1,
+      "questions": Array [
+        Object {
+          "correct_answer": "True",
+          "id": 1,
+          "incorrect_answers": Array [
+            "False",
+          ],
+          "question": "1 + 1 = 2?",
+          "type": "boolean",
+        },
+      ],
+    },
+  ],
+  "fetchError": "Error text",
 }
 `;
 

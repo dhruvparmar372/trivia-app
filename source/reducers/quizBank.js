@@ -1,13 +1,15 @@
 import _unionBy from "lodash.unionby";
 import {
   fetchQuiz as fetchQuizAction,
-  addQuiz as addQuizAction
+  addQuiz as addQuizAction,
+  setQuizFetchError as setQuizFetchErrorAction
 } from "source/actions/quizBank";
 import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 
 export const initialState = {
   data: [],
-  fetching: false
+  fetching: false,
+  fetchError: ""
 };
 
 export default function(state = initialState, action) {
@@ -15,7 +17,14 @@ export default function(state = initialState, action) {
     case fetchQuizAction.TRIGGER:
       return {
         ...state,
-        fetching: true
+        fetching: true,
+        fetchError: ""
+      };
+
+    case fetchQuizAction.SUCCESS:
+      return {
+        ...state,
+        fetchError: ""
       };
 
     case fetchQuizAction.FULFILL:
@@ -37,6 +46,12 @@ export default function(state = initialState, action) {
             data: state.data.filter(quiz => quiz.id !== action.quiz.id)
           }
         : state;
+
+    case setQuizFetchErrorAction().type:
+      return {
+        ...state,
+        fetchError: action.fetchErrorText
+      };
 
     default:
       return state;

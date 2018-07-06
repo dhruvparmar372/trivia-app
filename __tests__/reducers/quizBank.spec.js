@@ -1,6 +1,7 @@
 import {
   fetchQuiz as fetchQuizAction,
-  addQuiz as addQuizAction
+  addQuiz as addQuizAction,
+  setQuizFetchError as setQuizFetchErrorAction
 } from "source/actions/quizBank";
 import { startQuiz as startQuizAction } from "source/actions/activeQuiz";
 import quizBankReducer, { initialState } from "source/reducers/quizBank";
@@ -19,9 +20,15 @@ const dummyQuiz = {
 };
 
 describe("quizBank reducer", () => {
-  test("sets fetching true on fetchQuizAction.TRIGGER", () => {
+  test("sets fetching true on fetchQuizAction.TRIGGER and reset fetchError text", () => {
     expect(
-      quizBankReducer(initialState, fetchQuizAction.trigger())
+      quizBankReducer(
+        {
+          ...initialState,
+          fetchError: "fetch error"
+        },
+        fetchQuizAction.trigger()
+      )
     ).toMatchSnapshot();
   });
 
@@ -60,6 +67,15 @@ describe("quizBank reducer", () => {
   test("removes quiz from data on startQuiz action", () => {
     expect(
       quizBankReducer({ data: [dummyQuiz] }, startQuizAction(dummyQuiz))
+    ).toMatchSnapshot();
+  });
+
+  test("sets quiz fetch error text on setQuizFetchError action", () => {
+    expect(
+      quizBankReducer(
+        { data: [dummyQuiz], fetchError: "" },
+        setQuizFetchErrorAction("Error text")
+      )
     ).toMatchSnapshot();
   });
 });
